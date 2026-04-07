@@ -1,59 +1,54 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Lucineer/capitaine/master/docs/capitaine-logo.jpg" alt="Capitaine" width="120">
-</p>
+# GoalLog.ai — AI Goal Tracker
 
-<h1 align="center">goallog-ai</h1>
-
-<p align="center">Goal Setting — AI-powered goal setting and habit tracking.</p>
+Track goals with an assistant that remembers context and adapts to you.
 
 ---
 
-**Vessel stub** · Needs `worker.ts` to deploy · Part of the [Lucineer fleet](https://github.com/orgs/Lucineer/repositories)
+## Why this exists
 
-## Status
+Most goal trackers are rigid. They forget why you set a goal and don't adjust when life happens. This is a different approach: a stateless agent that works with your history, not against it.
 
-🟡 Hull not yet deployed. Fork and add a `worker.ts` to bring this vessel online.
+## Try it now
 
-## The Fleet
+Live instance: https://goallog-ai.casey-digennaro.workers.dev
+No account or email required to test the core features.
 
+---
 
-<details>
-<summary><strong>⚓ The Fleet</strong></summary>
+## What it does
 
-**Flagship vessels**
+*   Tracks goals and habits with clean, structured endpoints.
+*   Provides analytics on consistency and progress drift.
+*   Uses AI to offer adaptive check-ins based on your tracking history.
+*   Runs on Cloudflare Workers with zero dependencies.
+*   Follows a BYOK (Bring Your Own Keys) model for AI providers.
+*   Is designed to be forked and customized for your workflow.
 
-- [cocapn.ai](https://github.com/Lucineer/capitaine)
-- [personallog.ai](https://github.com/Lucineer/personallog-ai)
-- [businesslog.ai](https://github.com/Lucineer/businesslog-ai)
-- [studylog.ai](https://github.com/Lucineer/studylog-ai)
-- [makerlog.ai](https://github.com/Lucineer/makerlog-ai)
-- [playerlog.ai](https://github.com/Lucineer/playerlog-ai)
-- [dmlog.ai](https://github.com/Lucineer/dmlog-ai)
-- [reallog.ai](https://github.com/Lucineer/reallog-ai)
-- [deckboss.ai](https://github.com/Lucineer/deckboss-ai)
+## One Limitation
 
-**Fleet services**
+This is optimized for personal, low-to-moderate usage. While the Worker itself costs $0, your AI provider API calls are your responsibility and costs will scale with your usage.
 
-- [Fleet Catalog](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
-- [Git Agent (full)](https://github.com/Lucineer/git-agent)
-- [Cocapn Lite (minimal)](https://github.com/Lucineer/cocapn-lite)
-- [Fleet Orchestrator](https://github.com/Lucineer/fleet-orchestrator)
-- [Dead Reckoning Engine](https://github.com/Lucineer/dead-reckoning-engine)
-- [Dream Engine](https://github.com/Lucineer/dream-engine)
-- [Seed UI (5 layers)](https://github.com/Lucineer/seed-ui)
+---
 
-**For power users**
+## Quick Start
 
-- [Cocapn Lite (tabula rasa)](https://github.com/Lucineer/cocapn-lite)
-- [Cocapn (core platform)](https://github.com/Lucineer/cocapn)
-- [ZeroClaw (framework)](https://github.com/Lucineer/zeroclaw)
+1.  Fork this repository.
+2.  Deploy it to Cloudflare Workers.
+3.  Add your AI provider API keys as environment variables.
 
-[View all 106 repos →](https://github.com/orgs/Lucineer/repositories)
-[Fleet manifest →](https://github.com/Lucineer/capitaine/blob/master/docs/fleet/FLEET.md)
+All logic is in `worker.ts`. Adjust the coaching prompts, metrics, or endpoints there.
 
-</details>
+## How it works
 
+GoalLog.ai is an agent runtime built for Cloudflare Workers. It uses the Worker's KV store for persistence and operates with stateless endpoints. You bring your own AI API keys, so your data never routes through a third-party server.
 
 ## License
 
-MIT · Superinstance & Lucineer (DiGennaro et al.)
+MIT License. Superinstance & Lucineer (DiGennaro et al.).
+
+---
+
+<div align="center">
+  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> • 
+  <a href="https://cocapn.ai">Cocapn</a>
+</div>
