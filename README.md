@@ -1,75 +1,41 @@
-# GoalLog.ai — AI Goal Tracker
+# GoalLog.ai — AI Goal Tracker ✨
 
-You set goals. You forget them. This is a simple, open-source agent that helps you track them.
+You set a goal. An AI agent checks in with you on the schedule you choose. There are no spam reminders, progress graphs, or dashboards. It provides quiet, consistent accountability.
 
-An AI-powered goal tracker for consistent progress reviews and accountability, built as a single Cloudflare Worker.
-
----
-
-## Why this exists
-
-Most goal trackers are either static to-do lists or locked-down SaaS platforms. This is an alternative: a minimal agent you can run yourself. Your data stays in your infrastructure, and you control the logic.
-
----
-
-## Try It Now
-
-Test the public instance. No login required:
+Test the live instance:  
 https://goallog-ai.casey-digennaro.workers.dev
 
----
-
-## How It Works
-
-This is a stateless agent runtime for Cloudflare Workers. You interact with it via a simple web interface. It stores your goal history in a Cloudflare KV namespace and uses your AI API key to generate check-in prompts and reviews.
-
-**Key Features:**
-*   **Self-Hosted Data:** All data persists in your own Cloudflare KV store. No external databases or third-party servers.
-*   **Configurable Coaching:** The agent's personality and check-in questions are defined in plain text within the Worker. You can edit them in minutes.
-*   **Bring Your Own AI Key:** Connect to OpenAI, Anthropic, or other compatible providers. You pay your provider directly.
-*   **Zero Dependencies:** The entire application is contained in one file (`worker.ts`). There is no build step or npm installation.
-*   **Fork-First Design:** This codebase is intended to be forked and adapted to your specific needs.
-
-**An Honest Limitation:** This tool requires manual check-ins. It won't automatically track your habits or send push notifications. Its value comes from the structured reflection you perform when you use it.
-
----
+## Why This Exists
+Most goal trackers become a chore. This one avoids that by doing a single job: asking you a good question at the right time and remembering your answer.
 
 ## Quick Start
-
 1.  **Fork** this repository.
-2.  **Deploy** it to Cloudflare Workers.
-3.  **Configure** your `AI_API_KEY` as a Worker secret and update the `coachingPrompt` in `worker.ts` if desired.
+2.  **Deploy** it directly to Cloudflare Workers. No local setup is needed.
+3.  **Add** your `AI_API_KEY` as a Worker secret. Optionally, edit the agent's coaching prompt.
 
-That's it. Your instance is live.
+Your self-hosted goal tracker will be running in under two minutes.
 
----
+## Features
+*   Your goal history is stored only in your private Cloudflare KV store.
+*   Fully customizable coaching prompt. Adjust the tone to what works for you.
+*   Use any compatible AI API key (OpenAI, Anthropic, Groq, etc.).
+*   Zero dependencies and no build step. The entire application is one file.
+*   Fork-first design. This is a tool you copy and own, not a subscription.
+*   No user accounts, logins, or third-party tracking.
+*   Runs on Cloudflare's edge network with no external database.
+*   **One honest limitation:** Your goal history is bound by Cloudflare KV's 10MB per namespace limit.
+
+## How It Is Different
+1.  It does not send email, request social invites, or feature productivity leaderboards.
+2.  After you deploy it, it is your agent. It cannot be altered, shut down, or monetized by anyone else.
+3.  It handles one goal at a time. It does not try to be a multi-purpose life dashboard.
 
 ## Architecture
-
-GoalLog.ai is a single-script application built for Cloudflare Workers. It uses:
-*   **Cloudflare Workers** as the runtime.
-*   **Cloudflare KV** for persistent goal history storage.
-*   **Structured prompts** sent to the AI provider of your choice.
-
-All logic is in `worker.ts`. The web interface is basic HTML and vanilla JavaScript served from the same Worker.
-
----
-
-## Contributing
-
-This project follows the Cocapn Fleet's fork-first philosophy. The most valuable contribution is to fork the repository and build the version you need. If you have a change that benefits the core base, a pull request is welcome.
-
----
+This is a single-file Cloudflare Worker. All application logic, routing, frontend HTML, and AI prompts are contained within `worker.ts`.
 
 ## License
-
-MIT License.
+MIT License. Use, modify, and distribute this code freely.
 
 ---
 
-Superinstance & Lucineer (DiGennaro et al.).
-
-<div align="center">
-  <a href="https://the-fleet.casey-digennaro.workers.dev">The Fleet</a> •
-  <a href="https://cocapn.ai">Cocapn</a>
-</div>
+<div style="text-align:center;padding:16px;color:#64748b;font-size:.8rem"><a href="https://the-fleet.casey-digennaro.workers.dev" style="color:#64748b">The Fleet</a> &middot; <a href="https://cocapn.ai" style="color:#64748b">Cocapn</a></div>
